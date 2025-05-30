@@ -1,0 +1,31 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - homologa
+      - master
+
+jobs:
+  Continuous-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set permissions for Cypress
+        run: chmod +x ./node_modules/.bin/cypress || true
+
+      - name: Install Cypress binary
+        run: npx cypress install
+
+      - name: Run Cypress tests
+        run: npx cypress run

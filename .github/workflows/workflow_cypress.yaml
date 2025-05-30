@@ -1,0 +1,38 @@
+name: Teste de Carga Diário com K6
+
+on:
+  schedule:
+    - cron: '0 11 * * *'  # Todos os dias às 08:00 UTC
+  workflow_dispatch:     # Permite executar manualmente
+
+jobs:
+  k6-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar K6
+        run: |
+          sudo apt update
+          sudo apt install -y gnupg software-properties-common
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 33E65E213AF0FA9F
+          echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt update
+          sudo apt install -y k6
+
+      - name: Rodar teste de carga com K6
+        run: k6 run teste.js
+
+      - name: Gerar relatório HTML
+        run: |
+          npm install -g k6-reporter
+          k6 run --summary-export=summary.json teste.js
+          k6-reporter --out=resultado.html summary.json
+
+      - name: Fazer upload do relatório
+        uses: actions/upload-artifact@v3
+        with:
+          name: relatorio-k6
+          path: resultado.html
