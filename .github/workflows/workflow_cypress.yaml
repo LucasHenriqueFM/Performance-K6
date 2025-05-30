@@ -2,7 +2,7 @@ name: Teste de Carga Diário com K6
 
 on:
   schedule:
-    - cron: '10 11 * * *'  # Todos os dias às 08:00 UTC
+    - cron: '27 11 * * *'  # Todos os dias às 08:00 UTC
   workflow_dispatch:     # Permite executar manualmente
 
 jobs:
