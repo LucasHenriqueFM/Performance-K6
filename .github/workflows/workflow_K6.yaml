@@ -1,9 +1,12 @@
-name: k6-test
+name: Teste de Diário com K6
 
 on:
-  schedule:
-    - cron: '10 11 * * *' # roda todos os dias às 11:10
-  workflow_dispatch:
+  push:
+    branches:
+      - homologa
+      - master
+      - main
+
 
 jobs:
   test-k6:
