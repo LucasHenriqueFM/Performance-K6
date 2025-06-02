@@ -1,4 +1,4 @@
-name: Teste de Carga Diário com K6
+name: Teste de Diário com K6
 
 on:
   push:
