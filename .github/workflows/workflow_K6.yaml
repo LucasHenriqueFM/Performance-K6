@@ -28,10 +28,10 @@ jobs:
       - name: Rodar teste de carga com K6
         run: k6 run teste.js --out json=resultado.json
 
-      - name: Gerar relatório HTML
-        run: |
-          npm install -g xk6-reporter
-          xk6-reporter --json resultado.json --output resultado.html
+      # - name: Gerar relatório HTML
+      #   run: |
+      #     npm install -g xk6-reporter
+      #     xk6-reporter --json resultado.json --output resultado.html
 
       - name: Fazer upload do relatório
         uses: actions/upload-artifact@v4
