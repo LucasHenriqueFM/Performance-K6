@@ -26,15 +26,15 @@ jobs:
           sudo apt install -y k6
 
       - name: Rodar teste de carga com K6
-        run: k6 run teste.js --out json=resultado.json
+        run: k6 run teste.js --out json=relatorio.json
 
       # - name: Gerar relatório HTML
       #   run: |
       #     npm install -g xk6-reporter
-      #     xk6-reporter --json resultado.json --output resultado.html
+      #     xk6-reporter --json relatorio.json --output relatorio.html
 
       - name: Fazer upload do relatório
         uses: actions/upload-artifact@v4
         with:
           name: relatorio-k6
-          path: resultado.html
+          path: relatorio.html
