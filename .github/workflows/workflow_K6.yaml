@@ -7,7 +7,7 @@ on:
       - master
       - main
   schedule:
-    - cron: '20 17 * * *'  # Mantém um cron só
+    - cron: '30 17 * * *'
 
 jobs:
   test-k6:
@@ -29,8 +29,8 @@ jobs:
       - name: Rodar teste de carga com K6
         run: k6 run teste.js --out json=relatorio.json
 
-      # - name: Instalar xk6-reporter
-      #   run: npm install -g xk6-reporter
+      - name: Instalar xk6-reporter
+        run: npm install -g xk6-reporter
 
       - name: Gerar relatório HTML
         run: xk6-reporter --json relatorio.json --output relatorio.html
