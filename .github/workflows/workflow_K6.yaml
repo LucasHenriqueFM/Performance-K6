@@ -6,7 +6,8 @@ on:
       - homologa
       - master
       - main
-
+  schedule:
+      - cron: '50 14 * * *'  # Executa todos os dias às 12:00 UTC
 
 jobs:
   test-k6:
