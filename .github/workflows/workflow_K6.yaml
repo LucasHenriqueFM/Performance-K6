@@ -7,7 +7,7 @@ on:
       - master
       - main
   schedule:
-    - cron: '10 15 * * *'  # Mantém um cron só
+    - cron: '58 15 * * *'  # Mantém um cron só
 
 jobs:
   test-k6:
@@ -32,8 +32,8 @@ jobs:
       - name: Instalar xk6-reporter
         run: npm install -g xk6-reporter
 
-      - name: Gerar relatório HTML
-        run: xk6-reporter --json relatorio.json --output relatorio.html
+      # - name: Gerar relatório HTML
+      #   run: xk6-reporter --json relatorio.json --output relatorio.html
 
       - name: Fazer upload do relatório
         uses: actions/upload-artifact@v4
