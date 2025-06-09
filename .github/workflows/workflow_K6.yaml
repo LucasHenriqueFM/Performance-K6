@@ -7,7 +7,7 @@ on:
       - master
       - main
   schedule:
-    - cron: '30 17 * * *'
+    - cron: '50 17 * * *'
 
 jobs:
   test-k6:
