@@ -7,7 +7,8 @@ on:
       - master
       - main
   schedule:
-    - cron: '54 14 * * *'  # 11:50 horário de Brasília = 14:50 UTC
+    - cron: '01 15 * * *'
+    - cron: '1 15 * * *'
 
 jobs:
   test-k6:
