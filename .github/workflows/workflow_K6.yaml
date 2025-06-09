@@ -7,7 +7,7 @@ on:
       - master
       - main
   schedule:
-    - cron: '50 16 * * *'  # Mantém um cron só
+    - cron: '05 17 * * *'  # Mantém um cron só
 
 jobs:
   test-k6:
