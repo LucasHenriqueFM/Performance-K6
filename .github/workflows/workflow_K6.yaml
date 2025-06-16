@@ -7,7 +7,7 @@ on:
       - master
       - main
   schedule:
-    - cron: '37 19 * * *'
+    - cron: '37 19 * * *' # 18:37 - hórario de Brasilia
 
 jobs:
   test-k6:
@@ -27,16 +27,4 @@ jobs:
           sudo apt install -y k6
 
       - name: Rodar teste de carga com K6
-        run: k6 run teste.js --out json=relatorio.json
-
-      - name: Instalar xk6-reporter
-        run: npm install -g xk6-reporter
-
-      - name: Gerar relatório HTML
-        run: xk6-reporter --json relatorio.json --output relatorio.html
-
-      - name: Fazer upload do relatório
-        uses: actions/upload-artifact@v4
-        with:
-          name: relatorio-k6
-          path: relatorio.html
+        run: k6 run --out influxdb=http://192.168.1.7:8086/k6 teste.js
