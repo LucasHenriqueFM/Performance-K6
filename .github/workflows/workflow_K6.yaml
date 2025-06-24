@@ -27,4 +27,4 @@ jobs:
           sudo apt install -y k6
 
       - name: Rodar teste de carga com K6
-        run: k6 run --out influxdb=http://192.168.1.7:8086/k6 teste.js
+        run: k6 run --out influxdb=http://localhost:8086/k6 teste.js
